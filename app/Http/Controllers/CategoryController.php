@@ -74,24 +74,53 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        return view('admin.category.product_category_edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $customValidation = [
+            'category_name' => ['required', 'string', 'max:100'],
+        ];
+
+        $validator = Validator::make($request->all(), $customValidation);
+
+        if ($validator->fails()) {
+            return redirect()->route('category.edit')->withErrors($validator)->withInput();
+        }
+
+        Category::findOrFail($request->id)->update([
+            'category_name' => $request->category_name,
+            'updated_at' => Carbon::now(),
+        ]);
+
+        $notification = array(
+            'message' => 'Category Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('category.all')->with($notification);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        Category::latest()->where('id',$id)->delete();
+
+        $notification = array(
+            'message' => 'Category Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
     }
 }

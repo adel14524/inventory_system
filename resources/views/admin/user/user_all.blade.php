@@ -39,7 +39,7 @@
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Phone No</th>
-                                        <th>Role</th>
+                                        <th width="12%">Role</th>
                                         <th class="text-center" width="10%">Action</th>
                                     </tr>
                                 </thead>

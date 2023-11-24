@@ -95,9 +95,9 @@ class UserController extends Controller
         $users = User::latest()->where('isDeleted', '0')->get();
 
         foreach ($users as $key => $user) {
-            $user->role = $user->getRoleNames();
+            $user->roles = $user->roles->pluck('name')->toArray();
         }
-        // dd($users);
+
         return response()->json(['data' => $users]);
     }
 

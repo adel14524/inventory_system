@@ -60,4 +60,7 @@ Route::controller(CategoryController::class)->group(function () {
     Route::get('/product/category/ajax', 'show')->name('category.ajax');
     Route::get('/product/category/add', 'create')->name('category.add');
     Route::post('/product/category/store', 'store')->name('category.store');
+    Route::get('/product/category/edit/{id}', 'edit')->name('category.edit');
+    Route::post('/product/category/update', 'update')->name('category.update');
+    Route::get('/product/category/delete/{id}', 'destroy')->name('category.delete');
 });

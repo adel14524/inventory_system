@@ -35,6 +35,8 @@ $(document).ready(function (){
         ],
     });
 
+
+
     $('.parent').change(function () {
         var parentId = $(this).val();
         $('.child[data-parent="' + parentId + '"]').prop('checked', $(this).prop('checked'));
@@ -64,6 +66,7 @@ $(function(){
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
+                console.log(link);
                 window.location.href = link
                 Swal.fire(
                     'Deleted!',

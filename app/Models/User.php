@@ -51,10 +51,4 @@ class User extends Authenticatable
     {
         return 'username';
     }
-
-    // public function getRoleNames()
-    // {
-    //     return 'hello';
-    // }
-
 }
