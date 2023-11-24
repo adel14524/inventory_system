@@ -92,11 +92,13 @@ class UserController extends Controller
      */
     public function show()
     {
-        $user = User::latest()->where('isDeleted', '0')->get();
+        $users = User::latest()->where('isDeleted', '0')->get();
 
-        $rolename = $user->getRoleNames();
-        dd($rolename);
-        return response()->json(['data' => $user]);
+        foreach ($users as $key => $user) {
+            $user->role = $user->getRoleNames();
+        }
+        // dd($users);
+        return response()->json(['data' => $users]);
     }
 
     /**

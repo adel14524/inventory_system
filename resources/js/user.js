@@ -29,6 +29,10 @@ $(document).ready(function (){
                 name: 'phone'
             },
             {
+                data: 'role',
+                name: 'role'
+            },
+            {
                 data: 'id',
                 name: 'id',
                 render: function ( data, type, row ) {
