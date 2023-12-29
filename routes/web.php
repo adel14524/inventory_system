@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -63,4 +64,14 @@ Route::controller(CategoryController::class)->group(function () {
     Route::get('/product/category/edit/{id}', 'edit')->name('category.edit');
     Route::post('/product/category/update', 'update')->name('category.update');
     Route::get('/product/category/delete/{id}', 'destroy')->name('category.delete');
+});
+
+Route::controller(TagController::class)->group(function () {
+    Route::get('/product/tag/all', 'index')->name('tag.all');
+    Route::get('/product/tag/ajax', 'show')->name('tag.ajax');
+    Route::get('/product/tag/add', 'create')->name('tag.add');
+    Route::post('/product/tag/store', 'store')->name('tag.store');
+    Route::get('/product/tag/edit/{id}', 'edit')->name('tag.edit');
+    Route::post('/product/tag/update', 'update')->name('tag.update');
+    Route::get('/product/tag/delete/{id}', 'destroy')->name('tag.delete');
 });
